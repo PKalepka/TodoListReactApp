@@ -22,7 +22,7 @@ export default class Input extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="flex-input">
                 <input type="text" ref={this.inputTextRef} onChange={this.inputChanged}/>
                 <button onClick={this.addButtonClick}>Add</button>
             </div>

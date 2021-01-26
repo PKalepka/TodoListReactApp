@@ -4,7 +4,7 @@ import '../css/index.css';
 export default class Header extends React.Component {
     render() {
         return (
-            <div>
+            <div className="flex-header">
                 <h2>
                     Todo List
                 </h2>

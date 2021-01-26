@@ -4,16 +4,17 @@ import '../css/index.css';
 
 export default class TodoList extends React.Component {
   render() {
-    const item = this.props.items.map(note => {
+    const item = this.props.items.map((note, index) => {
       return (
-        <ListItem note={note}
+        <ListItem key={note.id + index}
+          note={note}
           onCheck={this.props.onCheck}
           onDelete={this.props.onDelete} />
       )
     })
 
     return (
-      <div>
+      <div className="flex-todolist">
         <ul>
           {item}
         </ul>

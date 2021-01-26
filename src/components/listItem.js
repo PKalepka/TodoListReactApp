@@ -13,11 +13,13 @@ export default class ListItem extends React.Component {
         const checkNote = this.props.onCheck;
         const deleteNote = this.props.onDelete;
         return (
-            <li key={note.id}>
+            <li key={note.id} className="flex-listitem">
                 <input type="checkbox"
                     checked={note.isChecked ? "checked" : ""}
                     onChange={() => checkNote(note.id)} />
-                {note.isChecked ? this.renderCrossedText(note.text) : note.text}
+                <div>
+                    {note.isChecked ? this.renderCrossedText(note.text) : note.text}
+                </div>
                 <button onClick={() => deleteNote(note.id)}>X</button>
             </li>
         );
