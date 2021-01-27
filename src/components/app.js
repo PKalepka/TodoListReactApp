@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './header.js';
 import Input from './input.js';
 import TodoList from './todoList.js';
-import '../css/index.css';
+import '../css/components/app.css';
 
 export default class App extends React.Component {
   constructor(props) {

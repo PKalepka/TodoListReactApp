@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/index.css';
+import '../css/components/listItem.css';
 
 export default class ListItem extends React.Component {
     renderCrossedText(text) {

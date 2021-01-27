@@ -1,0 +1,9 @@
+  .flex-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: stretch;
+    
+    width: 30%;
+    margin: auto;
+  }

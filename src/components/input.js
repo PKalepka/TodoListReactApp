@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/index.css';
+import '../css/components/input.css';
 
 export default class Input extends React.Component {
     constructor(props) {

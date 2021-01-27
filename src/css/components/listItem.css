@@ -1,0 +1,14 @@
+  .flex-listitem {
+    display: flex;
+    flex-flow: row;
+
+    padding: 1% 0;
+  }  
+
+  .flex-listitem input {
+    margin-right: 5%;
+  }
+
+  .flex-listitem div {
+    width: 100%;
+  }
