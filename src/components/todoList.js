@@ -1,6 +1,6 @@
 import React from 'react';
-import ListItem from './listItem.js'
-import '../css/components/todoList.css';
+import ListItem from './ListItem'
+import '../css/components/TodoList.css';
 
 export default class TodoList extends React.Component {
   render() {

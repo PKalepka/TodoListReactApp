@@ -1,26 +1,23 @@
 import React from 'react';
-import '../css/components/listItem.css';
+import '../css/components/ListItem.css';
 
 export default class ListItem extends React.Component {
-    renderCrossedText(text) {
-        return (
-            <s>{text}</s>
-        );
-    }
+    onChange = () => this.props.onCheck(this.props.note.id);
+
+    onClick = () => this.props.onDelete(this.props.note.id);
 
     render() {
         const note = this.props.note;
-        const checkNote = this.props.onCheck;
-        const deleteNote = this.props.onDelete;
+    
         return (
             <li key={note.id} className="flex-listitem">
                 <input type="checkbox"
                     checked={note.isChecked ? "checked" : ""}
-                    onChange={() => checkNote(note.id)} />
+                    onChange={this.onChange} />
                 <div>
-                    {note.isChecked ? this.renderCrossedText(note.text) : note.text}
+                    {note.isChecked ? (<s>{note.text}</s>) : note.text}
                 </div>
-                <button onClick={() => deleteNote(note.id)}>X</button>
+                <button onClick={this.onClick}>X</button>
             </li>
         );
     }

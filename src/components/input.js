@@ -1,29 +1,26 @@
 import React from 'react';
-import '../css/components/input.css';
+import '../css/components/Input.css';
 
 export default class Input extends React.Component {
-    constructor(props) {
-        super(props);
+    state = {inputText: ""};
 
-        this.state = {inputText: ""};
-        this.inputTextRef = React.createRef();
-        this.inputChanged = this.inputChanged.bind(this);
-        this.addButtonClick = this.addButtonClick.bind(this);
-    }
-
-    inputChanged(event){
+    inputChanged = (event) => {
         this.setState({inputText: event.target.value});
     }
 
-    addButtonClick() {
-        this.inputTextRef.current.value = "";
+    addButtonClick = () => {        
+        if (this.state.inputText === "") {
+            return;
+        }
+
+        this.setState({inputText: ""});
         this.props.onAdd(this.state.inputText);
     }
 
     render() {
         return (
             <div className="flex-input">
-                <input type="text" ref={this.inputTextRef} onChange={this.inputChanged}/>
+                <input type="text" value={this.state.inputText} onChange={this.inputChanged}/>
                 <button onClick={this.addButtonClick}>Add</button>
             </div>
         );
