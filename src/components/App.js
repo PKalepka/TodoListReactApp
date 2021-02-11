@@ -9,14 +9,12 @@ export default class App extends React.Component {
   state = { noteArray: [] };
 
   addNote = (inputText) => {
-    var newArray = this.state.noteArray;
-    var uid = uuidv4();
-    var newNote = {
-      id: uid,
+    var newArray = [...this.state.noteArray,
+    {
+      id: uuidv4(),
       isChecked: false,
       text: inputText
-    }
-    newArray.push(newNote);
+    }]
     this.setState({ noteArray: newArray });
   }
 
