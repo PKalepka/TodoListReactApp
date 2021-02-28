@@ -3,10 +3,18 @@ import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import Input from './Input';
 import TodoList from './TodoList';
+import getDefaultTodoList from "../services";
 import '../css/components/App.css';
 
 export default class App extends React.Component {
   state = { noteArray: [] };
+
+  async componentDidMount(){
+    const defaultData = await getDefaultTodoList();
+    var noteArray = JSON.parse(defaultData);
+    
+    this.setState({ noteArray: noteArray });
+  }
 
   addNote = (inputText) => {
     var newArray = [...this.state.noteArray,
