@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { store, addNote } from '../redux/store';
 import '../css/components/Input.css';
 
-export default function Input(props) {
+export default function Input() {
     const [inputText, setInputText] = useState("");
 
     const inputChanged = (event) => {
@@ -14,7 +15,9 @@ export default function Input(props) {
         }
 
         setInputText("");
-        props.onAdd(inputText);
+
+        var action = addNote(inputText);
+        store.dispatch(action);
     };
 
     return (

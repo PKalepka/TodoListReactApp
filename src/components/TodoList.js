@@ -1,14 +1,15 @@
 import React from 'react';
-import ListItem from './ListItem'
+import { useSelector } from 'react-redux';
+import ListItem from './ListItem';
 import '../css/components/TodoList.css';
 
-export default function TodoList(props) {
-  const item = props.items.map((note, index) => {
+export default function TodoList() {
+  const selectItems = state => state.noteArray;
+  const items = useSelector(selectItems);
+  const item = items.map((note, index) => {
     return (
       <ListItem key={note.id + index}
-        note={note}
-        onCheck={props.onCheck}
-        onDelete={props.onDelete} />
+        note={note} />
     )
   })
 

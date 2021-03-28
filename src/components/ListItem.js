@@ -1,9 +1,16 @@
 import React from 'react';
+import { store, deleteNote, checkNote } from '../redux/store';
 import '../css/components/ListItem.css';
 
 export default function ListItem(props) {
-    const onChange = () => props.onCheck(props.note.id);
-    const onClick = () => props.onDelete(props.note.id);
+    const onChange = () => {
+        var action = checkNote(props.note.id);
+        store.dispatch(action);
+    }
+    const onClick = () => {
+        var action = deleteNote(props.note.id);
+        store.dispatch(action);
+    }
     const note = props.note;
 
     return (
