@@ -1,12 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import ListItem from './ListItem';
 import '../css/components/TodoList.css';
 
-export default function TodoList() {
-  const selectItems = state => state.noteArray;
-  const items = useSelector(selectItems);
-  const item = items.map((note, index) => {
+function TodoList(props) {
+  const item = props.items.map((note, index) => {
     return (
       <ListItem key={note.id + index}
         note={note} />
@@ -21,3 +19,11 @@ export default function TodoList() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    items: state.noteArray
+  }
+};
+
+export default connect(mapStateToProps)(TodoList)

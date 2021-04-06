@@ -13,9 +13,6 @@ export default class App extends React.Component {
 
     var action = restoreState(noteArray);
     store.dispatch(action);
-
-    store.subscribe(() =>
-      this.setState({ noteArray: noteArray }));
   }
 
   render() {
