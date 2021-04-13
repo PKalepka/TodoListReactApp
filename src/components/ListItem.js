@@ -1,32 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteNote, checkNote } from '../redux/store';
+import { deleteNote, checkNote } from '../redux/actions/actionCreators';
 import '../css/components/ListItem.css';
 
 function ListItem(props) {
     const note = props.note;
 
     return (
-        <li key={note.id} className="flex-listitem">
+        <li className="flex-listitem">
             <input type="checkbox"
                 checked={note.isChecked ? "checked" : ""}
-                onChange={() => props.onChange(note.id)} />
+                onChange={props.onChange} />
             <div>
                 {note.isChecked ? (<s>{note.text}</s>) : note.text}
             </div>
-            <button onClick={() => props.onClick(note.id)}>X</button>
+            <button onClick={props.onClick}>X</button>
         </li>
     );
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onChange: (id) => {
-            var action = checkNote(id);
+        onChange: () => {
+            var action = checkNote(ownProps.note.id);
             dispatch(action);
         },
-        onClick: (id) => {
-            var action = deleteNote(id);
+        onClick: () => {
+            var action = deleteNote(ownProps.note.id);
             dispatch(action);
         }
     }

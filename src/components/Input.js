@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { store, addNote } from '../redux/store';
+import { connect } from 'react-redux';
+import { addNote } from '../redux/actions/actionCreators';
 import '../css/components/Input.css';
 
-export default function Input() {
+function Input(props) {
     const [inputText, setInputText] = useState("");
 
     const inputChanged = (event) => {
@@ -16,8 +17,7 @@ export default function Input() {
 
         setInputText("");
 
-        var action = addNote(inputText);
-        store.dispatch(action);
+        props.addNote(inputText);
     };
 
     return (
@@ -27,3 +27,14 @@ export default function Input() {
         </div>
     );
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addNote: (inputText) => {
+            var action = addNote(inputText);
+            dispatch(action);
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Input);
